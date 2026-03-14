@@ -18,7 +18,7 @@
 - [ ] Bonus: [sebutkan jika ada]
 
 ## Screenshots
-Hackquest - tugas crowdfunding
+Hackquest-tugas-crowdfunding.png
 
 ## How to Test
 1. Deploy contract di Sepolia
