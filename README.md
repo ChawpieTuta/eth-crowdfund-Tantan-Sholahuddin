@@ -18,7 +18,7 @@
 - [ ] Bonus: [sebutkan jika ada]
 
 ## Screenshots
-[Sertakan screenshots dari Remix]
+Hackquest - tugas crowdfunding
 
 ## How to Test
 1. Deploy contract di Sepolia
