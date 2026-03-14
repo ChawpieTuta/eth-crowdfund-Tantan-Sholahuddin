@@ -28,5 +28,4 @@ hackquest-tugas-crowdfunding.png
 5. Jika deadline lewat dan goal belum tercapai → Contributor refund
 
 ## Lessons Learned
-[Tulis apa yang Anda pelajari dari challenge ini]
 Sangat menarik! My first smart contract journey to be a web3 engineer.
