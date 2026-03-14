@@ -1,0 +1,688 @@
+{
+	"compiler": {
+		"version": "0.8.31+commit.fd3a2265"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "campaignId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "creator",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "goalAmount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "deadline",
+						"type": "uint256"
+					}
+				],
+				"name": "CampaignCreated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "campaignId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "totalRaised",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "goalAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "CampaignFailed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "campaignId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "totalRaised",
+						"type": "uint256"
+					}
+				],
+				"name": "CampaignSuccessful",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "campaignId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "contributor",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "totalRaised",
+						"type": "uint256"
+					}
+				],
+				"name": "ContributionMade",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "campaignId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "creator",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "FundsClaimed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "campaignId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "contributor",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "RefundIssued",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "MAX_DURATION",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "MIN_CONTRIBUTION",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "MIN_DURATION",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "MIN_GOAL",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "campaignCounter",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "campaigns",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "campaignId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "creator",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "goalAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "currentAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "deadline",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "createdAt",
+						"type": "uint256"
+					},
+					{
+						"internalType": "enum CrowdFund.CampaignStatus",
+						"name": "status",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint256",
+						"name": "contributorCount",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_campaignId",
+						"type": "uint256"
+					}
+				],
+				"name": "checkCampaign",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_campaignId",
+						"type": "uint256"
+					}
+				],
+				"name": "claimFunds",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_campaignId",
+						"type": "uint256"
+					}
+				],
+				"name": "contribute",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "contributions",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_description",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_goalAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_durationDays",
+						"type": "uint256"
+					}
+				],
+				"name": "createCampaign",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "creatorCampaigns",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_campaignId",
+						"type": "uint256"
+					}
+				],
+				"name": "getCampaignDetails",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "campaignId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "creator",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "title",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "description",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "goalAmount",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "currentAmount",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "deadline",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "createdAt",
+								"type": "uint256"
+							},
+							{
+								"internalType": "enum CrowdFund.CampaignStatus",
+								"name": "status",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint256",
+								"name": "contributorCount",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct CrowdFund.Campaign",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getContractBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getMyCampaigns",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_campaignId",
+						"type": "uint256"
+					}
+				],
+				"name": "getMyContribution",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_campaignId",
+						"type": "uint256"
+					}
+				],
+				"name": "getTimeRemaining",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "hasContributed",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_campaignId",
+						"type": "uint256"
+					}
+				],
+				"name": "refund",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"author": "[Nama Anda]",
+			"details": "Challenge Final Ethereum Co-Learning Camp",
+			"kind": "dev",
+			"methods": {
+				"checkCampaign(uint256)": {
+					"params": {
+						"_campaignId": "ID campaign"
+					}
+				},
+				"claimFunds(uint256)": {
+					"params": {
+						"_campaignId": "ID campaign"
+					}
+				},
+				"contribute(uint256)": {
+					"params": {
+						"_campaignId": "ID campaign"
+					}
+				},
+				"createCampaign(string,string,uint256,uint256)": {
+					"params": {
+						"_description": "Deskripsi campaign",
+						"_durationDays": "Durasi campaign dalam hari",
+						"_goalAmount": "Target dana (dalam wei)",
+						"_title": "Judul campaign"
+					}
+				},
+				"refund(uint256)": {
+					"params": {
+						"_campaignId": "ID campaign"
+					}
+				}
+			},
+			"title": "CrowdFund - Decentralized Crowdfunding Platform",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"checkCampaign(uint256)": {
+					"notice": "Cek dan update status campaign"
+				},
+				"claimFunds(uint256)": {
+					"notice": "Creator claim dana setelah campaign sukses"
+				},
+				"contribute(uint256)": {
+					"notice": "Kontribusi ETH ke campaign"
+				},
+				"createCampaign(string,string,uint256,uint256)": {
+					"notice": "Buat campaign crowdfunding baru"
+				},
+				"getCampaignDetails(uint256)": {
+					"notice": "Lihat detail campaign"
+				},
+				"getContractBalance()": {
+					"notice": "Lihat saldo contract"
+				},
+				"getMyCampaigns()": {
+					"notice": "Lihat semua campaign yang saya buat"
+				},
+				"getMyContribution(uint256)": {
+					"notice": "Lihat kontribusi saya di campaign"
+				},
+				"getTimeRemaining(uint256)": {
+					"notice": "Lihat sisa waktu campaign"
+				},
+				"refund(uint256)": {
+					"notice": "Kontributor refund jika campaign gagal"
+				}
+			},
+			"notice": "Platform crowdfunding terdesentralisasi di Ethereum",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/CrowdFund.sol": "CrowdFund"
+		},
+		"evmVersion": "osaka",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/CrowdFund.sol": {
+			"keccak256": "0x4da88aed0b6aa3f3c1683d8d48334b53af0188c53251e33aedd72bc761c1ac14",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://79b568eb6dc2366a5ff9d1cc258b9e05a8d675e5c013105aae17a1b339ec3751",
+				"dweb:/ipfs/QmX759C8EDVJggvYeRXp7nFCubgPcbcwQuKgBHFJMFYP2q"
+			]
+		}
+	},
+	"version": 1
+}
